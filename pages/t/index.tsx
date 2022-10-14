@@ -16,6 +16,14 @@ var config = {
   data : data
 };
 
+var configStop = {
+  method: 'post',
+  url: 'https://cors-anywhere.herokuapp.com/https://55e2302f-f46f-4f81-b3ce-a570d62163ad.webhook.fc.azure-automation.net/webhooks?token=9EzRmuLbK6oTI2zLx%2fFeoFc4nlfwlSVJh7c0rQ%2fMaUo%3d',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
 
 
 
@@ -32,7 +40,13 @@ const start = () =>{
 }
 
 const stop = () =>{
-    console.log('stop');
+  axios(configStop)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 const Home: NextPage = () => {
   return (
